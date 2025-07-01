@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Print Hub - Upload Files</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <style>
+        .file-preview {
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            background: #f9f9f9;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        .preview-container {
+            margin-bottom: 20px;
+        }
+        .preview-nav {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        .preview-nav button {
+            padding: 5px 15px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .preview-nav button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+        .preview-page {
+            margin: 0 auto;
+            text-align: center;
+        }
+        .preview-page img, .preview-page canvas {
+            max-width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+            border: 1px solid #eee;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .preview-text {
+            white-space: pre-wrap;
+            text-align: left;
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Campus Print Hub</h1>
+            <p>Upload your documents and get them printed with ease</p>
+        </div>
+
+        <div class="upload-section">
+            <h2>Student Information</h2>
+            <div class="student-info">
+                <div class="input-group">
+                    <label for="studentName">Student Name</label>
+                    <input type="text" id="studentName" placeholder="Enter your full name">
+                </div>
+                <div class="input-group">
+                    <label for="studentId">Student ID</label>
+                    <input type="text" id="studentId" placeholder="Enter your student ID">
+                </div>
+                <div class="input-group">
+                    <label for="studentPhone">Phone Number</label>
+                    <input type="tel" id="studentPhone" placeholder="Enter your phone number">
+                </div>
+            </div>
+
+            <h2>Upload Files</h2>
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📄</div>
+                <div class="upload-text">Drop files here or click to browse</div>
+                <div class="upload-subtext">Supports PDF, DOC, DOCX, JPG, PNG (Max 10MB per file)</div>
+                <input type="file" id="fileInput" class="file-input" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+            </div>
+
+            <div class="file-list" id="fileList">
+                <div class="no-files">No files uploaded yet</div>
+            </div>
+        </div>
+
+        <div class="pricing-section">
+            <h2>Printing Options</h2>
+            <div class="print-options">
+                <div class="settings-option">
+                    <label>Print Mode:</label>
+                    <div class="print-mode-options">
+                        <label class="radio-option">
+                            <input type="radio" name="colorMode" value="bw" checked>
+                            <span>Black & White (₹2/page)</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="colorMode" value="color">
+                            <span>Color (₹10/page)</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Pricing Information</h3>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Black & White</h3>
+                    <div class="price">₹2/page</div>
+                </div>
+                <div class="pricing-card">
+                    <h3>Color Print</h3>
+                    <div class="price">₹10/page</div>
+                </div>
+            </div>
+
+            <div class="order-summary">
+                <h3>Order Summary</h3>
+                <div class="summary-row">
+                    <span>Total Pages:</span>
+                    <span id="totalPages">0</span>
+                </div>
+                <div class="summary-row">
+                    <span>Print Cost:</span>
+                    <span id="printCost">₹0</span>
+                </div>
+                <div class="summary-row">
+                    <span>Total Amount:</span>
+                    <span id="totalAmount">₹0</span>
+                </div>
+            </div>
+
+            <button class="submit-btn" id="submitBtn" disabled>
+                Submit Print Order 🖨️
+            </button>
+        </div>
+    </div>
+
+    <!-- File Settings Modal -->
+    <div id="fileSettingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalFileName">File Settings</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Configure individual page settings for this file:</p>
+                <div id="pageSettingsContainer"></div>
+                <div id="fileSettingsSummary" class="file-settings-summary"></div>
+                <div class="file-preview" id="filePreview" style="display: none;">
+                    <div class="preview-content" id="previewContent">
+                        <!-- Preview content will be inserted here -->
+                    </div>
+                </div>
+                <button id="saveSettingsBtn" class="save-settings-btn">Save Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
