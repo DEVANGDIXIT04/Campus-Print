@@ -30,12 +30,6 @@ A full-stack web application designed to streamline document printing for colleg
 
 ---
 
-## 📸 Screenshots
-
-> *(Add screenshots here — UI of upload, print preferences, payment confirmation, etc.)*
-
----
-
 ## ⚙️ Setup Instructions
 
 ### Prerequisites
