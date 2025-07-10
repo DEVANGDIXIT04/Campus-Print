@@ -45,7 +45,7 @@ A full-stack web application designed to streamline document printing for colleg
 
 ### Clone the Repository
 ```bash
-git clone https://github.com/yourusername/campus-print-hub.git
+git clone (https://github.com/DEVANGDIXIT04/Campus-Print/tree/main)
 cd campus-print-hub
 Frontend
 bash
@@ -95,16 +95,3 @@ Pull requests are welcome! For major changes, please open an issue first to disc
 📄 License
 This project is open-source and available under the MIT License.
 
-markdown
-Copy
-Edit
-
----
-
-### 📌 Tips:
-- Replace `yourusername` in the GitHub link with your actual username.
-- Add UI screenshots under the `Screenshots` section.
-- Upload your `.env.example` if you're sharing this repo publicly (don't commit real keys).
-- Consider adding a basic [MIT License](https://choosealicense.com/licenses/mit/) if you plan to open source it.
-
-Would you like me to generate this file and upload it to your GitHub repo for you? Or
